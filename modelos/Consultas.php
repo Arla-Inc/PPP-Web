@@ -34,7 +34,7 @@ Class Consultas
 
 	public function totalmontohoy()
 	{
-		$sql="SELECT IFNULL(SUM(monto),0) as total_montos FROM prestamos WHERE DATE(fprestamo)=curdate()";
+		$sql="SELECT IFNULL(SUM(monto),0) as total_montos FROM ppp WHERE DATE(fprestamo)=curdate()";
 		return ejecutarConsulta($sql);
 	}
     public function totalpagoshoy()

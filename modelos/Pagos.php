@@ -37,14 +37,14 @@ Class Pago
     //Implementamos el metodo para cancelar el pago
     public function mostrar($idpago)
     {
-        $sql="SELECT c.nombre AS cliente,g.usuario,g.fecha,g.cuota FROM pagos g INNER JOIN prestamos p ON g.idprestamo=p.idprestamo INNER JOIN clientes c ON p.idcliente=c.idcliente";
+        $sql="SELECT c.nombre AS cliente,g.usuario,g.fecha,g.cuota FROM pagos g INNER JOIN ppp p ON g.idprestamo=p.idprestamo INNER JOIN clientes c ON p.idcliente=c.idcliente";
         return ejectuarConsultaSimpleFila($sql);
     }
     
     //Implementamos el metodo para cancelar el pago
     public function listar()
     {
-        $sql="SELECT g.idpago,c.nombre AS cliente,g.usuario,g.fecha,g.cuota FROM pagos g INNER JOIN prestamos p ON g.idprestamo=p.idprestamo INNER JOIN clientes c ON p.idcliente=c.idcliente";
+        $sql="SELECT g.idpago,c.nombre AS cliente,g.usuario,g.fecha,g.cuota FROM pagos g INNER JOIN ppp p ON g.idprestamo=p.idprestamo INNER JOIN clientes c ON p.idcliente=c.idcliente";
         return ejecutarConsulta($sql);
     }
 }

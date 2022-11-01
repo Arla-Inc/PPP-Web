@@ -12,7 +12,7 @@ Class Prestamo
     //implementamos un metodo para insertar registros
     public function insertar($idcliente,$usuario,$fprestamo,$monto,$interes,$saldo,$formapago,$fechapago,$plazo,$fplazo)
     {
-        $sql="INSERT INTO prestamos (idcliente,usuario,fprestamo,monto,interes,saldo,formapago,fpago,plazo,fplazo,estado) 
+        $sql="INSERT INTO ppp (idcliente,usuario,fprestamo,monto,interes,saldo,formapago,fpago,plazo,fplazo,estado) 
         VALUES ('$idcliente','$usuario','$fprestamo','$monto','$interes','$saldo','$formapago','$fechapago','$plazo','$fplazo','1')";
         return ejecutarConsulta($sql);
     }
@@ -20,7 +20,7 @@ Class Prestamo
     //Implementamos el metodo para Editar Registros
     public function editar($idprestamo,$idcliente,$usuario,$fprestamo,$monto,$interes,$saldo,$formapago,$fechapago,$plazo,$fplazo)
 	{
-		$sql="UPDATE prestamos SET 
+		$sql="UPDATE ppp SET 
                      idcliente='$idcliente',
                      usuario='$usuario',
                      fprestamo='$fprestamo',
@@ -38,14 +38,14 @@ Class Prestamo
     //Implementamos un método para eliminar categorías
 	public function eliminar($idprestamo)
 	{
-		$sql="DELETE FROM prestamos WHERE idprestamo='$idprestamo'";
+		$sql="DELETE FROM ppp WHERE idprestamo='$idprestamo'";
 		return ejecutarConsulta($sql);
 	}
     
     //Implementamos un método para desactivar Clientes
 	public function cancelado($idprestamo)
 	{
-		$sql="UPDATE prestamos SET estado ='0' WHERE SaldoActual=0";
+		$sql="UPDATE ppp SET estado ='0' WHERE SaldoActual=0";
 		return ejecutarConsulta($sql);
 	} 
     
@@ -53,7 +53,7 @@ Class Prestamo
 	public function mostrar($idprestamo)
 	{
 		$sql="SELECT p.idprestamo,c.nombre as cliente,u.nombre as usuario,DATE(p.fprestamo) as fecha,p.monto,p.interes,p.saldo,p.formapago,DATE(p.fpago) as fechap,p.plazo,DATE(p.fplazo) as fechaf,p.estado 
-        FROM prestamos p INNER JOIN clientes c ON 
+        FROM ppp p INNER JOIN clientes c ON 
         p.idcliente=c.idcliente INNER JOIN usuarios u ON 
         p.usuario=u.idusuario";
 		return ejecutarConsultaSimpleFila($sql);
@@ -63,7 +63,7 @@ Class Prestamo
     public function listar()
 	{
 		$sql="SELECT p.idprestamo,c.nombre as cliente,u.nombre as usuario,DATE(p.fprestamo) as fecha,p.monto,p.interes,p.saldo,p.formapago,DATE(p.fpago) as fechap,p.plazo,DATE(p.fplazo) as fechaf,p.estado 
-        FROM prestamos p INNER JOIN clientes c ON 
+        FROM ppp p INNER JOIN clientes c ON 
         p.idcliente=c.idcliente INNER JOIN usuarios u ON 
         p.usuario=u.idusuario";
 		return ejecutarConsulta($sql);		
@@ -71,7 +71,7 @@ Class Prestamo
     
     public function select()
 	{
-		$sql="SELECT p.idprestamo,c.nombre FROM prestamos p INNER JOIN clientes c ON p.idcliente=c.idcliente WHERE p.estado=1 ORDER BY c.nombre ASC";
+		$sql="SELECT p.idprestamo,c.nombre FROM ppp p INNER JOIN clientes c ON p.idcliente=c.idcliente WHERE p.estado=1 ORDER BY c.nombre ASC";
 		return ejecutarConsulta($sql);		
 	}
 
