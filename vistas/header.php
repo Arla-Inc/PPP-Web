@@ -110,7 +110,29 @@ if (strlen(session_id()) < 1)
         </li>';
             }
             ?>
-        
+            <?php 
+            if ($_SESSION['Usuarios']==1)
+            {
+              echo '<li>
+<a href="usuarios.php">
+<i class="fa fa-user"></i>
+<span>Usuarios</span>
+</a>
+</li>';
+            }
+            ?>
+<?php 
+            if ($_SESSION['Productos']==1)
+            {
+              echo '<li>
+<a href="productos.php">
+<i class="fa fa-user"></i>
+<span>Productos</span>
+</a>
+</li>';
+            }
+            ?>
+            <!--MI CÓDIGO VA HASTA AQUI-->
          <?php 
             if ($_SESSION['Clientes']==1)
             {
